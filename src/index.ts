@@ -1,14 +1,11 @@
 import express from 'express';
 import { config } from 'dotenv';
+import { getUserIPDetails } from './controllers/controller';
 
 config()
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-	res.send("Hello World!");
-});
+app.route('/').get(getUserIPDetails);
 
-app.listen(PORT, () => {
-	console.log(`Listening patiently on PORT ${PORT}`);
-});
+app.listen(PORT);
